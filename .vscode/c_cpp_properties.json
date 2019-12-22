@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/home/ewpratten/Downloads/arduino-1.8.8/tools/**",
+                "/home/ewpratten/Downloads/arduino-1.8.8/hardware/tools/avr/**",
+                "/home/ewpratten/Downloads/arduino-1.8.8/hardware/arduino/avr/**",
+                "/home/ewpratten/Downloads/arduino-1.8.8/libraries/**"
+            ],
+            "forcedInclude": [
+                "/home/ewpratten/Downloads/arduino-1.8.8/hardware/arduino/avr/cores/arduino/Arduino.h"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,4 @@
+{
+    "sketch": "controlboard.ino",
+    "board": "arduino:avr:leonardo"
+}
