@@ -26,8 +26,81 @@
  * the help of Lib5K's frc.lib5k.interface.controlboard package.
  */
 
+// Include needed headers
 #include "Joystick.h"
 
-void setup() {}
+// Constants
+#define updatePeriodMS 20
 
-void loop() {}
+// Create a HID Joystick interface class
+Joystick_ Joystick;
+
+class JoystickButton {
+   private:
+    // Digital pin to read from
+    int digitalPin;
+
+    // "Button" ID to write to on computer
+    int buttonId;
+
+   public:
+    /**
+     * Create a new JoystickButton
+     *
+     * @param digitalPin Arduino digital pin to read button data from
+     * @param buttonID HID button ID to write state to
+     */
+    JoystickButton(int digitalPin, int buttonId) {
+        // Set local variables
+        this->digitalPin = digitalPin;
+        this->buttonId = buttonId;
+    }
+
+    /**
+     * Initialize button I/O
+     */
+    void init() {
+        // Set pin mode to pull up. More info about this feature can be found
+        // here: https://www.arduino.cc/en/Tutorial/InputPullupSerial
+        pinMode(this->digitalPin, INPUT_PULLUP);
+    }
+
+    /**
+     * Get the un-filtered button state.
+     *
+     * @return Button state
+     */
+    void getRawButton() {
+        // The INPUT_PULLUP mode set for the pin will cause button states to be
+        // inverted. Using "!" will flip them to what we expect
+        return !digitalRead(this->digitalPin);
+    }
+}
+
+// Button mappings
+JoystickButton buttons[] = {new JoystickButton(2, 0)};
+
+// Count the number of buttons registered
+const int buttonCount = (sizeof(buttons) / sizeof(buttons[0]));
+
+/**
+ * Arduino setup function. All init code should go here
+ */
+void setup() {
+    // Init each button
+    for (int i = 0; i < buttonCount; i++) {
+        // Call button's init function
+        buttons[i].init();
+    }
+
+    // Init the Joystick library
+    Joystick.begin();
+}
+
+/**
+ * Arduino loop function. This will loop
+ */
+void loop() {
+    // Wait for the set period
+    delay(updatePeriodMS);
+}
