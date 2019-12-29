@@ -3,6 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
+                "/home/ewpratten/Downloads/arduino-1.8.8/libraries/Joystick/src",
                 "/home/ewpratten/Downloads/arduino-1.8.8/tools/**",
                 "/home/ewpratten/Downloads/arduino-1.8.8/hardware/tools/avr/**",
                 "/home/ewpratten/Downloads/arduino-1.8.8/hardware/arduino/avr/**",
