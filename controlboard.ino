@@ -105,7 +105,7 @@ void JoystickButton::init() {
 bool JoystickButton::getRawButton() {
     // The INPUT_PULLUP mode set for the pin will cause button states to be
     // inverted. Using "!" will flip them to what we expect
-    return !(digitalRead(this->digitalPin) == 0);
+    return !(digitalRead(this->digitalPin) == 1);
 }
 
 ButtonData JoystickButton::getButtonData() {
@@ -115,7 +115,8 @@ ButtonData JoystickButton::getButtonData() {
     // Fill output with state Info
     output.HIDid = this->buttonId;
     output.state = this->getRawButton();
-    output.isNew = (this->lastState != output.state);
+    output.isNew = true;
+    //(this->lastState != output.state);
 
     // Set the last state for the button
     this->lastState = output.isNew;
@@ -130,7 +131,8 @@ ButtonData JoystickButton::getButtonData() {
 // JoystickButton[] buttons = new JoystickButton[]{ ... }
 // The innter curly braces define the arguments passed to each object's
 // constructor
-JoystickButton buttons[] = {{2, 0}, {3, 1}};
+JoystickButton buttons[] = {{2, 0}, {3, 1}, {4, 2}, {5, 3},  {6, 4},
+                            {7, 5}, {8, 6}, {9, 7}, {10, 8}, {11, 9}};
 
 // Count the number of buttons registered
 const int buttonCount = (sizeof(buttons) / sizeof(buttons[0]));

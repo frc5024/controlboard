@@ -1,4 +1,5 @@
 {
     "sketch": "controlboard.ino",
-    "board": "arduino:avr:leonardo"
+    "board": "arduino:avr:leonardo",
+    "port": "/dev/ttyACM0"
 }
