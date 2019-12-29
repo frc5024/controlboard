@@ -70,10 +70,10 @@ class JoystickButton {
      *
      * @return Button state
      */
-    void getRawButton() {
+    bool getRawButton() {
         // The INPUT_PULLUP mode set for the pin will cause button states to be
         // inverted. Using "!" will flip them to what we expect
-        return !digitalRead(this->digitalPin);
+        return !(digitalRead(this->digitalPin) == 0);
     }
 }
 
